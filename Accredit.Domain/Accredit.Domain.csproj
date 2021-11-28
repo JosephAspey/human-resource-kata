@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20211128191432_inital-create.cs" />
+    <Compile Remove="Migrations\20211128191432_inital-create.Designer.cs" />
+    <Compile Remove="Migrations\20211128194627_inital-create.cs" />
+    <Compile Remove="Migrations\20211128194627_inital-create.Designer.cs" />
+    <Compile Remove="Migrations\20211128195008_inital-create.cs" />
+    <Compile Remove="Migrations\20211128195008_inital-create.Designer.cs" />
+    <Compile Remove="Migrations\20211128195351_inital-create.cs" />
+    <Compile Remove="Migrations\20211128195351_inital-create.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.21">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Accredit.Shared\Accredit.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

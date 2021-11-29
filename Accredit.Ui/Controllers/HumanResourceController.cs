@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Accredit.Domain.Repositories;
 using Accredit.Ui.Models;
+using Accredit.Ui.Settings;
 using AutoMapper;
+using Microsoft.Extensions.Options;
 
 namespace Accredit.Ui.Controllers
 {
@@ -12,11 +14,13 @@ namespace Accredit.Ui.Controllers
 
         private readonly IHumanResourceRepository _humanResourceRepository;
         private readonly IMapper _mapper;
+        private readonly UiSettings _uiSettings;
 
-        public HumanResourceController(IHumanResourceRepository humanResourceRepository, IMapper mapper)
+        public HumanResourceController(IHumanResourceRepository humanResourceRepository, IMapper mapper, IOptions<UiSettings> uiSettings)
         {
             _humanResourceRepository = humanResourceRepository;
             _mapper = mapper;
+            _uiSettings = uiSettings.Value;
         }
 
         public async Task<IActionResult> Index()

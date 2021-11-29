@@ -4,8 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Accredit.Domain.Context;
 using Accredit.Domain.Repositories;
+using Accredit.Ui.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using Microsoft.VisualBasic.FileIO;
 
 
 namespace Accredit.Ui
@@ -31,7 +33,10 @@ namespace Accredit.Ui
 
             services.AddControllersWithViews();
 
-           //Register services here:
+            //Configure Options here:
+            services.Configure<UiSettings>(Configuration.GetSection("UiSettings"));
+
+            //Register services here:
             services.AddScoped<IHumanResourceRepository, HumanResourceRepository>();
         }
 

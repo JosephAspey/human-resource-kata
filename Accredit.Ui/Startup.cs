@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Accredit.Domain.Context;
+using Accredit.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 
@@ -25,7 +26,13 @@ namespace Accredit.Ui
             services.AddDbContext<HumanResourceContext>(opts =>
                 opts.UseSqlServer(Configuration["ConnectionString:HumanResourceDb"]));
 
+            //Add Auto Mapper
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddControllersWithViews();
+
+           //Register services here:
+            services.AddScoped<IHumanResourceRepository, HumanResourceRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

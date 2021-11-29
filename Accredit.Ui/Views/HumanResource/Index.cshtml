@@ -1,0 +1,41 @@
+﻿@model List<HumanResourceViewModel>;
+
+@{
+    ViewData["Title"] = "Human Resource";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Human Resource</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Department Name</th>
+                <th scope="col">Status</th>
+                <th scope="col">Employee Number</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.FirstName @item.LastName</td>
+                        <td>@item.DateOfBirth.ToString("dd/MM/yyyy")</td>
+                        <td>@item.DepartmentName</td>
+                        <td>@item.Status.ToString()</td>
+                        <td>@item.EmployeeNumber</td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+
+</div>

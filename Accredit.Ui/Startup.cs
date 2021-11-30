@@ -1,10 +1,10 @@
+using Accredit.Core.Areas.Paging.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Accredit.Domain.Context;
 using Accredit.Domain.Repositories;
-using Accredit.Ui.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Microsoft.VisualBasic.FileIO;
@@ -34,10 +34,10 @@ namespace Accredit.Ui
             services.AddControllersWithViews();
 
             //Configure Options here:
-            services.Configure<UiSettings>(Configuration.GetSection("UiSettings"));
+            services.Configure<PagingSettings>(Configuration.GetSection("PagingSettings"));
 
             //Register services here:
-            services.AddScoped<IHumanResourceRepository, HumanResourceRepository>();
+            services.AddTransient<IHumanResourceRepository, HumanResourceRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

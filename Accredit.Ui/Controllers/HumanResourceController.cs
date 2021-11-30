@@ -1,34 +1,34 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Accredit.Core.Areas.Paging;
 using Accredit.Domain.Repositories;
 using Accredit.Ui.Models;
-using Accredit.Ui.Settings;
 using AutoMapper;
-using Microsoft.Extensions.Options;
 
 namespace Accredit.Ui.Controllers
 {
     public class HumanResourceController : Controller
     {
-
         private readonly IHumanResourceRepository _humanResourceRepository;
         private readonly IMapper _mapper;
-        private readonly UiSettings _uiSettings;
 
-        public HumanResourceController(IHumanResourceRepository humanResourceRepository, IMapper mapper, IOptions<UiSettings> uiSettings)
+        public HumanResourceController(IHumanResourceRepository humanResourceRepository, IMapper mapper)
         {
             _humanResourceRepository = humanResourceRepository;
             _mapper = mapper;
-            _uiSettings = uiSettings.Value;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pageNumber)
         {
-            var humanResources = await _humanResourceRepository.GetHumanResources();
+            var humanResources = await _humanResourceRepository.GetHumanResources(pageNumber);
 
             var humanResourcesViewModel
-                = _mapper.Map<List<HumanResourceViewModel>>(humanResources);
+                = _mapper.Map<PaginatedList<HumanResourceViewModel>>(humanResources);
+
+            //TODO: include pagination when mapping to ViewModel with AutoMapper
+            humanResourcesViewModel.PageIndex = humanResources.PageIndex;
+            humanResourcesViewModel.TotalPages = humanResources.TotalPages;
 
             return View("Index", humanResourcesViewModel);
         }

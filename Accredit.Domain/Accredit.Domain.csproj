@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Accredit.Core\Accredit.Core.csproj" />
     <ProjectReference Include="..\Accredit.Shared\Accredit.Shared.csproj" />
   </ItemGroup>
 

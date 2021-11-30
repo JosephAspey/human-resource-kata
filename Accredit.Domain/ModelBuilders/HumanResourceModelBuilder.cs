@@ -35,7 +35,7 @@ namespace Accredit.Domain.ModelBuilders
                     DateOfBirth = new DateTime(2002, 11, 28),
                     DepartmentName = "Sales",
                     HumanResourceStatusId = HumanResourceStatus.Disabled,
-                    EmployeeNumber = "03"
+                    EmployeeNumber = "02"
                 },
                 new HumanResource
                 {

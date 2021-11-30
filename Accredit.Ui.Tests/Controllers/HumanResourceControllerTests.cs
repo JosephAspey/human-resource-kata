@@ -49,7 +49,6 @@ namespace Accredit.Ui.Tests.Controllers
             result?.ViewName.Should().Be("Index");
         }
 
-
         [Fact]
         public async Task Given_Index_When_Invoked_Then_ShouldReturnAPaginatedListOfHumanResources()
         {

@@ -30,7 +30,7 @@ namespace Accredit.Ui.Controllers
             var humanResourcesViewModel
                 = _mapper.Map<List<HumanResourceViewModel>>(humanResources);
 
-            return View(humanResourcesViewModel);
+            return View("Index", humanResourcesViewModel);
         }
     }
 }
